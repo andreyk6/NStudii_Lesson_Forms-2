@@ -1,0 +1,21 @@
+﻿@model EmptyProject.ViewModels.CreateUserViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<form method="post">
+    <input type="email" value="@Model.Email" required name="Email" placeholder="Your email" />
+    <br />
+    <input type="text" value="@Model.Login" required maxlength="15" name="Login" placeholder="Your name" />
+    <br />
+    <input type="password" required name="Password" placeholder="Use strong password like pA2@34a91" />
+    <br />
+    <input type="password" required name="Password2" placeholder="Enter your password again" />
+    <br />
+    <input type="submit" value="Create" />
+</form>
+
+
+<h2>Create</h2>
+
