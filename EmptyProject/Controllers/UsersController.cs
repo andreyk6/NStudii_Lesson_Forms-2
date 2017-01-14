@@ -35,6 +35,7 @@ namespace EmptyProject.Controllers
                     Login = user.Login,
                     Password = user.Password
                 });
+                return RedirectToAction("Index", "Home");
             }
             return View(user);
         }
