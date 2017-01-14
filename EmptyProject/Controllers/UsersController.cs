@@ -37,6 +37,9 @@ namespace EmptyProject.Controllers
                 });
                 return RedirectToAction("Index", "Home");
             }
+            user.Password = "";
+            user.Password2 = "";
+
             return View(user);
         }
 
