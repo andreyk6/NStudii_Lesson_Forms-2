@@ -17,3 +17,4 @@ namespace EmptyProject.Models
         public virtual SubscriptionType SubscriptionType { get; set; }
 
     }
+}

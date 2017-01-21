@@ -14,6 +14,17 @@ namespace EmptyProject.Models
         }
 
         public DbSet<User> User { get; set; }
+
         public DbSet<Role> Role { get; set; }
+
+        public DbSet<Brand> Brand { get; set; }
+
+        public DbSet<Subscription> Subscription { get; set;}
+
+        public DbSet<SubscriptionType> SubscriptionType { get; set;}
+
+        public DbSet<Item> Item { get; set; }
+
+        public DbSet<Store> Store { get; set; }
     }
 }
