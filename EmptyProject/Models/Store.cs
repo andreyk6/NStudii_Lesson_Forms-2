@@ -5,9 +5,8 @@ using System.Web;
 
 namespace EmptyProject.Models
 {
-    public class Store
+    public class Store : ModelBase
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
 
         public virtual ICollection<Item> Items { get; set; }

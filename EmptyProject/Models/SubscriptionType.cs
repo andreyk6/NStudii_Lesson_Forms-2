@@ -5,9 +5,8 @@ using System.Web;
 
 namespace EmptyProject.Models
 {
-    public class SubscriptionType
+    public class SubscriptionType:ModelBase
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
 

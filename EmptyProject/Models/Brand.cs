@@ -5,10 +5,8 @@ using System.Web;
 
 namespace EmptyProject.Models
 {
-    public class Brand
+    public class Brand : ModelBase
     {
-        public Guid Id { get; set; }
-
         public string Name { get; set; }
         public string LogoURL { get; set; }
         public string Description { get; set; }

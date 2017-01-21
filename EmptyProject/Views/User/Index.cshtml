@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EmptyProject.Models.User>
+
+@{
+    ViewBag.Title = "All users";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Email
+        </th>
+        <th>
+            Login
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (EmptyProject.Models.User user in Model)
+    {
+        <tr>
+            <td>
+                @user.Email
+            </td>
+            <td>
+                @user.Login
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = user.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = user.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = user.Id })
+            </td>
+        </tr>
+    }
+
+</table>

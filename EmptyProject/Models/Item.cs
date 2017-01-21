@@ -5,10 +5,8 @@ using System.Web;
 
 namespace EmptyProject.Models
 {
-    public class Item
+    public class Item:ModelBase
     {
-        public Guid Id { get; set; }
-
         public string Name { get; set; }
         public string Descriplion { get; set; }
         public string ImageURL { get; set; }
