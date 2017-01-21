@@ -1,0 +1,31 @@
+﻿@model IEnumerable<EmptyProject.Models.Store>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Stores</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            StoreId
+        </th>
+    </tr>
+
+   @foreach (var store in Model)
+   {
+        <tr>
+            <td>
+                @store.Name
+            </td>
+            <td>
+                @store.Id
+            </td>
+        </tr>
+   }
+</table>
+
