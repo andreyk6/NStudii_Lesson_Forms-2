@@ -25,6 +25,7 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+
             return View(new CreateUserVM());
         }
 

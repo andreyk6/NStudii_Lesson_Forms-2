@@ -120,6 +120,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -136,8 +138,9 @@
     <Compile Include="Models\SubscriptionType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Store\CreateStoreVM.cs" />
+    <Compile Include="ViewModels\Item\CreateItemVM.cs" />
     <Compile Include="ViewModels\Brand\CreateBrandVM.cs" />
-    <Compile Include="ViewModels\User\CreateUserViewModel.cs" />
     <Compile Include="ViewModels\User\CreateUserVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +153,8 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Brand\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -160,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CreateStoreVM\" />
     <Folder Include="Views\CreateBrandVM\" />
   </ItemGroup>
   <PropertyGroup>
