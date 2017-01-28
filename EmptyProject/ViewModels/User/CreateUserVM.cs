@@ -13,7 +13,7 @@ namespace EmptyProject.ViewModels.User
         public string Email { get; set; }
 
         [Required]
-        [MinLength(5)]
+        [MinLength(2)]
         [MaxLength(15)]
         public string Login { get; set; }
 
