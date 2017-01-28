@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Store\CreateStoreVM.cs" />
+    <Compile Include="ViewModels\Item\CreateItemVM.cs" />
     <Compile Include="ViewModels\User\CreateUserVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +152,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Items\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
