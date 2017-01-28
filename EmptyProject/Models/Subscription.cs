@@ -5,10 +5,8 @@ using System.Web;
 
 namespace EmptyProject.Models
 {
-    public class Subscription
+    public class Subscription:ModelBase
     {
-        public Guid Id { get; set; }
-
         public DateTime ExperationData { get; set; }
 
 

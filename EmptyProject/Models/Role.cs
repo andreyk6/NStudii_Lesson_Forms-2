@@ -5,9 +5,8 @@ using System.Web;
 
 namespace EmptyProject.Models
 {
-    public class Role
+    public class Role: ModelBase
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }
