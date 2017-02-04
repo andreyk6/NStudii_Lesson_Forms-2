@@ -156,6 +156,9 @@
     <Content Include="Views\Store\Create.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Brand\Create.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml" />
+    <Content Include="Views\Store\Delete.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -165,8 +168,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CreateStoreVM\" />
     <Folder Include="Views\CreateBrandVM\" />
+    <Folder Include="Views\CreateStoreVM\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

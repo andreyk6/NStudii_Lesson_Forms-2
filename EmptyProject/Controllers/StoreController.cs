@@ -44,5 +44,51 @@ namespace EmptyProject.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Edit(Guid? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Store store = _db.Store.Find(id);
+            if (store != null)
+            {
+                return View(store);
+            }
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Store store)
+        {
+            _db.Entry(store).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(Guid id)
+        {
+            Store s = _db.Store.Find(id);
+            if (s == null)
+            {
+                return HttpNotFound();
+            }
+            return View(s);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(Guid id)
+        {
+            Store s = _db.Store.Find(id);
+            if (s == null)
+            {
+                return HttpNotFound();
+            }
+            _db.Store.Remove(s);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
