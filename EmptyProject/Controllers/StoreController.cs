@@ -38,6 +38,7 @@ namespace EmptyProject.Controllers
 
                 return RedirectToAction("Index");
             }
+
             else
             {
                 return View(storeVM);
