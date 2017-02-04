@@ -42,13 +42,70 @@ namespace EmptyProject.Controllers
             return View(item);
         }
 
-        public ActionResult Edit(Guid Id)
+        [HttpGet]
+        public ActionResult Read(Guid Id)
         {
-            return View();
+            if(Id==null)
+            {
+                return HttpNotFound();
+            }
+            Item item = db.Item.Find(Id);
+            if(item==null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
         }
-        public ActionResult Delete()
+
+        [HttpGet]
+        public ActionResult Edit(Guid? Id)
         {
-            return View();
+            if(Id==null)
+            {
+                return HttpNotFound();
+            }
+            Item item = db.Item.Find(Id);
+            if(item==null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Item item)
+        {
+            db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(Guid Id)
+        {
+            if(Id==null)
+            {
+                return HttpNotFound();
+            }
+            Item item = db.Item.Find(Id);
+            if (item==null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
+        }
+
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DeleteConfirmed(Guid Id)
+        {
+            if(Id==null)
+            {
+                return HttpNotFound();
+            }
+            Item item = db.Item.Find(Id);
+            db.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
