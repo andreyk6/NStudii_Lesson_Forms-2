@@ -12,6 +12,14 @@ namespace EmptyProject.Controllers
     public class BrandController : Controller
     {
         public ApplicationContext db = new ApplicationContext();
+
+
+        public ActionResult Index()
+        {
+            List<Brand> brands = db.Brand.ToList();
+            return View(brands);
+        }
+        
         // GET: Brand
         [HttpGet]
         public ActionResult Create()
@@ -39,13 +47,13 @@ namespace EmptyProject.Controllers
         }
 
 
-        public ViewResult Read(int id )
+        public ViewResult Read(Guid id )
         {
             Brand b = db.Brand.Find(id);
             return View();
         }
 
-        public ActionResult Delete(int id )
+        public ActionResult Delete(Guid id )
         {
             Brand b = db.Brand.Find(id);
             if (b != null)
@@ -56,7 +64,7 @@ namespace EmptyProject.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id )
+        public ActionResult DeleteConfirmed(Guid id )
         {
             Brand b = db.Brand.Find(id);
                 if (b == null)
@@ -67,8 +75,9 @@ namespace EmptyProject.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [HttpGet]
-        public ActionResult EditBrand(int? id)
+        public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
@@ -82,7 +91,7 @@ namespace EmptyProject.Controllers
             return HttpNotFound();
         }
         [HttpPost]
-        public ActionResult EditBrand(Brand brand)
+        public ActionResult Edit(Brand brand)
         {
             db.Entry(brand).State = EntityState.Modified;
             db.SaveChanges();

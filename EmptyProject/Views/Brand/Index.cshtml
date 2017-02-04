@@ -1,0 +1,21 @@
+﻿@model IEnumerable<EmptyProject.Models.Brand>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h1>
+    Brand List
+</h1>
+
+@foreach (var brand in Model)
+{
+    <h3>@brand.Name</h3>
+    <img src="@brand.LogoURL" />
+    <ul>
+        <li>@brand.Id</li>
+@*        <li>@brand.Stores.Select(s=>s.Name).ToString()</li>*@
+        <li>@brand.Description</li>
+        <li>@brand.User.Login (@brand.UserId)</li>
+    </ul>
+}
