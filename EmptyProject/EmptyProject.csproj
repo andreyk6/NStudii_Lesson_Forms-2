@@ -160,6 +160,9 @@
     <Content Include="Views\Store\Create.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Brand\Create.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml" />
+    <Content Include="Views\Store\Delete.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Items\Read.cshtml" />
     <Content Include="Views\Brand\Read.cshtml" />
