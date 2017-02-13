@@ -147,6 +147,7 @@
     <Compile Include="ViewModels\Item\CreateItemVM.cs" />
     <Compile Include="ViewModels\Brand\CreateBrandVM.cs" />
     <Compile Include="ViewModels\User\CreateUserVM.cs" />
+    <Compile Include="ViewModels\User\LoginUserVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -168,6 +169,7 @@
     <Content Include="Views\Items\Read.cshtml" />
     <Content Include="Views\Brand\Read.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
