@@ -18,6 +18,7 @@ namespace EmptyProject.Models
                 .HasRequired(t => t.User)
                 .WithOptional(u => u.Token);
         }
+        public DbSet<Token> Token { get; set; }
 
         public DbSet<User> User { get; set; }
 

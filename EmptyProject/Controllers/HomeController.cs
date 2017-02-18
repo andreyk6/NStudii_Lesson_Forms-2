@@ -14,6 +14,16 @@ namespace EmptyProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            string token = Request.Cookies.Get("token").Value;
+            if (token == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+            else
+            {
+                var user = _db.Token.FirstOrDefault(t => t.Value == token).User;
+                return View(user);
+            }
             return View();
         }
 

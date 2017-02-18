@@ -79,6 +79,8 @@ namespace EmptyProject.Controllers
 
         private void GenerateTokenAndSaveToDb(User user)
         {
+            user.Token = new Token();
+            user.Token.Id = Guid.NewGuid();
             user.Token.ExpirensDate = DateTime.Now.AddDays(30);
             user.Token.Value = "token" + DateTime.Now + user.Login;
             _db.SaveChanges();

@@ -1,0 +1,12 @@
+﻿@model EmptyProject.ViewModels.User.LoginUserVM
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<form method="post">
+    @Html.EditorForModel()
+    <button type="submit">Login</button>
+</form>
