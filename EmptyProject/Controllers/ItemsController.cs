@@ -24,15 +24,15 @@ namespace EmptyProject.Controllers
         [HttpPost]
         public ActionResult Create(CreateItemVM item)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var NewItem = new Models.Item()
                 {
                     Name = item.Name,
-                    Description=item.Description,
-                    ImageURL=item.ImageUrl,
-                    Price=item.Price,
-                    StoreId=item.StoreId
+                    Description = item.Description,
+                    ImageURL = item.ImageUrl,
+                    Price = item.Price,
+                    StoreId = item.StoreId
                 };
                 db.Item.Add(NewItem);
                 db.SaveChanges();
@@ -45,12 +45,12 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Read(Guid Id)
         {
-            if(Id==null)
+            if (Id == null)
             {
                 return HttpNotFound();
             }
             Item item = db.Item.Find(Id);
-            if(item==null)
+            if (item == null)
             {
                 return HttpNotFound();
             }
@@ -60,12 +60,12 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Edit(Guid? Id)
         {
-            if(Id==null)
+            if (Id == null)
             {
                 return HttpNotFound();
             }
             Item item = db.Item.Find(Id);
-            if(item==null)
+            if (item == null)
             {
                 return HttpNotFound();
             }
@@ -83,18 +83,17 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Delete(Guid Id)
         {
-            if(Id==null)
+            if (Id == null)
             {
                 return HttpNotFound();
             }
             Item item = db.Item.Find(Id);
-            if (item==null)
+            if (item == null)
             {
                 return HttpNotFound();
             }
             return View(item);
         }
-
         [HttpPost,ActionName("Delete")]
         public ActionResult DeleteConfirmed(Guid Id)
         {
