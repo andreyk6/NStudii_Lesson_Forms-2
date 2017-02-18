@@ -56,5 +56,39 @@ namespace EmptyProject.Controllers
                 return View(userVM);
             }
         }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View( new LoginUserVM());
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginUserVM userLoginVM)
+        {
+            var user = _db.User.FirstOrDefault(u => u.Login == userLoginVM.Login && u.Password == userLoginVM.Password);
+            if ( user == null )
+            {
+                return View(userLoginVM);
+            }
+
+
+            if ( user.Token == null || user.Token.ExpiresDate < DateTime.Now)
+            {
+                GenerateTokenAndSaveToDb(user);
+            }
+
+            Response.Cookies.Add(new System.Web.HttpCookie("token",user.Token.Value));
+
+            return RedirectToAction("Index","Home");
+        }
+
+        private void GenerateTokenAndSaveToDb(User user)
+        {
+            user.Token = new Token();
+            user.Token.Value = new Random().Next().ToString() + "_ _" + DateTime.Now.GetHashCode();
+            _db.SaveChanges();
+
+        }
     }
 }

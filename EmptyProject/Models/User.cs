@@ -16,6 +16,12 @@ namespace EmptyProject.Models
         public string Password { get; set; }
 
         public virtual ICollection<Role> Roles { get; set; }
+
+        public Guid TokenId { get; set; }
+
+        public virtual Token Token { get; set; }
+
+
         /*
          public string name {get;private set;}
          private string _name;
