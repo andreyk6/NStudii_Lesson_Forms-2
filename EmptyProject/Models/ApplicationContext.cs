@@ -12,6 +12,12 @@ namespace EmptyProject.Models
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Token>()
+                .HasRequired(t => t.User)
+                .WithOptional(u => u.Token);
+        }
 
         public DbSet<User> User { get; set; }
 
