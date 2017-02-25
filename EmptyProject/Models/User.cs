@@ -9,6 +9,10 @@ namespace EmptyProject.Models
 {
     public class User : ModelBase
     {
+        public Guid TokenId { get; set; }
+
+        public virtual Token Token { get; set; }
+
         public string Email { get; set; }
         
         public string Login { get; set; }

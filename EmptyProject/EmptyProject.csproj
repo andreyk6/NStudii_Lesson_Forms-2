@@ -147,7 +147,7 @@
     <Compile Include="ViewModels\Item\CreateItemVM.cs" />
     <Compile Include="ViewModels\Brand\CreateBrandVM.cs" />
     <Compile Include="ViewModels\User\CreateUserVM.cs" />
-    <Compile Include="ViewModels\User\UserLoginVM.cs" />
+    <Compile Include="ViewModels\User\LoginUserVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -181,6 +181,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\CreateBrandVM\" />
     <Folder Include="Views\CreateStoreVM\" />
+    <Folder Include="Views\LoginUserVM\" />
+    <Folder Include="Views\Token\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <PropertyGroup>

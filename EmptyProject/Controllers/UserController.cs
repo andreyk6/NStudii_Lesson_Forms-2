@@ -89,14 +89,34 @@ namespace EmptyProject.Controllers
             }
             
         }
-
-        public ActionResult GenerateToken(User user)
+        [HttpGet]
+        public ActionResult Login()
         {
-            Token token = new Token(user.Login + DateTime.Today, DateTime.Today.AddDays(30), user.Id, Guid.NewGuid());
-            user.TokenId = token.Id;
-            _db.SaveChanges();
-            return View();
+            return View(new LoginUserVM());
+        }
+        [HttpPost]
+        public ActionResult Login(LoginUserVM userLoginVM)
+        {
+            var user = _db.User.FirstOrDefault(u => u.Login == userLoginVM.Login && u.Password == userLoginVM.Password);
+            if (user == null)
+            {
+                return View(userLoginVM);
+            }
+            if (user.Token == null)
+            {
+                GenerateTokenAndSaveToDb(user);
+            }
+            Response.Cookies.Add(new System.Web.HttpCookie("token", user.Token.Value));
+            return RedirectToAction("Index", "Home");
         }
 
+        private void GenerateTokenAndSaveToDb(User user)
+        {
+            user.Token = new Token();
+            user.Token.Id = Guid.NewGuid();
+            user.Token.ExpirensDate = DateTime.Now.AddDays(30);
+            user.Token.Value = "token" + DateTime.Now + user.Login;
+            _db.SaveChanges();
+        }
     }
 }
