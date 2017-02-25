@@ -3,6 +3,7 @@ using EmptyProject.ViewModels;
 using System.Web.Mvc;
 using System;
 using System.Linq;
+using EmptyProject.Helpers;
 using EmptyProject.ViewModels.User;
 
 namespace EmptyProject.Controllers
@@ -17,6 +18,7 @@ namespace EmptyProject.Controllers
         }
 
         // GET: Users
+        [Auth]
         public ActionResult Index()
         {
             return View(_db.User.ToList());
@@ -33,8 +35,8 @@ namespace EmptyProject.Controllers
         public ActionResult Create(CreateUserVM userVM)
         {
             if (ModelState.IsValid &&
-                _db.User.Select((u) => u.Email == userVM.Email).Count() == 0 &&
-                _db.User.Select((u) => u.Login == userVM.Login).Count() == 0
+                !_db.User.Select((u) => u.Email == userVM.Email).Any() &&
+                !_db.User.Select((u) => u.Login == userVM.Login).Any()
                 )
             {
                 var user = new User()

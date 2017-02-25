@@ -125,6 +125,7 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Helpers\AuthAttribute.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
