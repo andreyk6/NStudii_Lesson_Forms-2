@@ -4,9 +4,11 @@ using System.Web.Mvc;
 using System;
 using System.Linq;
 using EmptyProject.ViewModels.User;
+using EmptyProject.Helper;
 
 namespace EmptyProject.Controllers
 {
+    [AuthAttribute]
     public class UserController : Controller
     {
         ApplicationContext _db = new ApplicationContext();
@@ -17,17 +19,14 @@ namespace EmptyProject.Controllers
         }
 
         // GET: Users
-        public ActionResult Index()
+        public ActionResult Index(User user)
         {
             string token = Request.Cookies["token"].Value;
             if(token==null)
             {
                 return RedirectToAction("Login");
             }
-            else
-            {
-                var token1 = _db.Token.;
-            }
+            return View();
         }
 
         [HttpGet]
@@ -65,30 +64,6 @@ namespace EmptyProject.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View(new UserLoginVM());
-        }
-
-        [HttpPost]
-        public ActionResult Login(UserLoginVM userVm)
-        {
-            var user = _db.User.FirstOrDefault(
-                u => u.Login == userVm.Login && u.Password == userVm.Password
-            );
-            if(user==null)
-            {
-                return View(new UserLoginVM());
-            }
-            else
-            {
-                GenerateToken(user);
-                Response.Cookies.Add(new System.Web.HttpCookie("token",user.token.token));
-                return RedirectToAction("Index");
-            }
-            
-        }
         [HttpGet]
         public ActionResult Login()
         {
