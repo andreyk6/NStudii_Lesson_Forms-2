@@ -20,6 +20,15 @@ namespace EmptyProject.Models
         }
         public DbSet<Token> Token { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Token>()
+                .HasRequired(t => t.user)
+                .WithOptional(u => u.token);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<User> User { get; set; }
 
         public DbSet<Role> Role { get; set; }
