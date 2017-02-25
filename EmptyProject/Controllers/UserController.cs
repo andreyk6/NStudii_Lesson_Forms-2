@@ -19,21 +19,35 @@ namespace EmptyProject.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            string token = Request.Cookies["token"].Value;
-            if(token==null)
+            string tokenValue = Request.Cookies["token"].Value;
+            if (tokenValue == null)
             {
                 return RedirectToAction("Login");
             }
-            else
+
+            Token token = _db.Token.FirstOrDefault(t => t.token == tokenValue);
+            if (token == null)
             {
-                var token1 = _db.Token.;
+                return RedirectToAction("Login");
             }
+
+            var user = _db.User.FirstOrDefault(u => u.TokenId == token.Id);
+
+            if (user != null)
+            {
+                if (DateTime.Today > token.ExpiresDate)
+                {
+                    return RedirectToAction("Login");
+                }
+                return View();
+            }
+            return RedirectToAction("Login");
         }
 
         [HttpGet]
         public ActionResult Create()
         {
-
+            //var token1 = _db.Token.FirstOrDefault();
             return View(new CreateUserVM());
         }
 
@@ -68,55 +82,36 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View(new UserLoginVM());
+            return View(new LoginUserVM());
         }
 
         [HttpPost]
-        public ActionResult Login(UserLoginVM userVm)
+        public ActionResult Login(LoginUserVM userVm)
         {
             var user = _db.User.FirstOrDefault(
                 u => u.Login == userVm.Login && u.Password == userVm.Password
             );
-            if(user==null)
+            if (user == null)
             {
-                return View(new UserLoginVM());
+                return View(new LoginUserVM());
             }
             else
             {
                 GenerateToken(user);
-                Response.Cookies.Add(new System.Web.HttpCookie("token",user.token.token));
+                Response.Cookies.Add(new System.Web.HttpCookie("token", user.token.token));
                 return RedirectToAction("Index");
             }
-            
-        }
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View(new LoginUserVM());
-        }
-        [HttpPost]
-        public ActionResult Login(LoginUserVM userLoginVM)
-        {
-            var user = _db.User.FirstOrDefault(u => u.Login == userLoginVM.Login && u.Password == userLoginVM.Password);
-            if (user == null)
-            {
-                return View(userLoginVM);
-            }
-            if (user.Token == null)
-            {
-                GenerateTokenAndSaveToDb(user);
-            }
-            Response.Cookies.Add(new System.Web.HttpCookie("token", user.Token.Value));
-            return RedirectToAction("Index", "Home");
+
         }
 
-        private void GenerateTokenAndSaveToDb(User user)
+        public ActionResult GenerateToken(User user)
         {
-            user.Token = new Token();
-            user.Token.Id = Guid.NewGuid();
-            user.Token.ExpirensDate = DateTime.Now.AddDays(30);
-            user.Token.Value = "token" + DateTime.Now + user.Login;
+            Token token = new Token(user.Login + DateTime.Today, DateTime.Today.AddDays(30), user.Id, Guid.NewGuid());
+            user.TokenId = token.Id;
+            _db.Token.Add(token);
             _db.SaveChanges();
+            return View();
         }
+
     }
 }

@@ -21,8 +21,6 @@ namespace EmptyProject.Models
 
         public virtual ICollection<Role> Roles { get; set; }
 
-        public Guid TokenId { get; set; }
-
         public virtual Token token { get; set; }
         /*
          public string name {get;private set;}
