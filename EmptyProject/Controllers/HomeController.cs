@@ -12,18 +12,15 @@ namespace EmptyProject.Controllers
         private ApplicationContext _db = new ApplicationContext();
 
         // GET: Home
-        [Auth]
+        
         public ActionResult Index()
         {
-            string token = Request.Cookies.Get("token").Value;
-            var user = _db.Token.FirstOrDefault(t => t.Value == token).User;
-            return View(user);
+            
+            return View();
         }
 
-        {
-            var roles = _db.Role;
-
-            return View(roles);
-        }
+        
+         
+        
     }
 }

@@ -15,29 +15,35 @@ namespace EmptyProject.Help
         ApplicationContext _db = new ApplicationContext();
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
+
         {
-            var tokenValue = httpContext.Request.Cookies.Get("token");
-
-            if (tokenValue == null)
+            var tokenCookie = httpContext.Request.Cookies.Get("token");
+            if (tokenCookie != null)
             {
-                return true;
+                var tokenValue = httpContext.Request.Cookies.Get("token").Value;
 
+                if (tokenValue == null)
+                {
+                    return true;
+
+                }
+
+
+                var token = _db.Token.FirstOrDefault(t => t.Value == tokenValue);
+                if (token == null)
+                {
+                    return true;
+                }
+
+
+                if (token.ExpiresDate <= DateTime.Now)
+                {
+                    return true;
+                }
+
+                return false;
             }
-
-
-            var token = _db.Token.FirstOrDefult(t => t.Value == tokenValue.Value);
-            if (token == null)
-            {
-                return true;
-            }
-
-
-            if (token.ExpirensDate <= DateTime.Now)
-            {
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         public override void OnAuthorization(AuthorizationContext filterContext)
@@ -46,14 +52,12 @@ namespace EmptyProject.Help
             {
                 var routeParams = new RouteValueDictionary()
                 {
-                    { "controller","user" },
-                    {"action", "login" }
-        };
+                    { "controller","home" },
+                    {"action", "index" }
+                };
 
                 filterContext.Result = new RedirectToRouteResult(routeParams);
-
             }
         }
     }
 }
-      
