@@ -126,6 +126,7 @@
     <Compile Include="Controllers\LoginUserVM.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Help\AnonymousOnlyAttribute.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -178,7 +179,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\NewFolder1\" />
+    <Folder Include="Views\AnonymousOnlyAttribute\" />
     <Folder Include="Views\CreateBrandVM\" />
     <Folder Include="Views\CreateStoreVM\" />
     <Folder Include="Views\Users\" />

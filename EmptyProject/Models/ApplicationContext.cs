@@ -8,6 +8,7 @@ namespace EmptyProject.Models
 {
     public class ApplicationContext : DbContext
     {
+
         static ApplicationContext()
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
@@ -37,5 +38,6 @@ namespace EmptyProject.Models
         public DbSet<Item> Item { get; set; }
 
         public DbSet<Store> Store { get; set; }
+        
     }
 }
