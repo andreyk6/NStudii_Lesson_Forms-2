@@ -18,16 +18,8 @@ namespace EmptyProject.Models
                 .HasRequired(t => t.User)
                 .WithOptional(u => u.Token);
         }
+        public ApplicationContext() : base("ProjectxDb") { }
         public DbSet<Token> Token { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Token>()
-                .HasRequired(t => t.user)
-                .WithOptional(u => u.token);
-
-            base.OnModelCreating(modelBuilder);
-        }
 
         public DbSet<User> User { get; set; }
 

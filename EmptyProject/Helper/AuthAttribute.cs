@@ -48,13 +48,16 @@ namespace EmptyProject.Helper
         }
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectToRouteResult(
-                new RouteValueDictionary()
+            if (AuthorizeCore(filterContext.HttpContext) == false)
+            {
+                var routeParams = new RouteValueDictionary()
                 {
                     { "controller","user"},
                     { "action","login"}
-                }
-                );
+                    };
+
+                filterContext.Result = new RedirectToRouteResult(routeParams);
+            }
         }
 
     }

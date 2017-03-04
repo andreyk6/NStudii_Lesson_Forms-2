@@ -8,7 +8,7 @@ using EmptyProject.Helper;
 
 namespace EmptyProject.Controllers
 {
-    [AuthAttribute]
+    
     public class UserController : Controller
     {
         ApplicationContext _db = new ApplicationContext();
@@ -19,6 +19,7 @@ namespace EmptyProject.Controllers
         }
 
         // GET: Users
+        [Auth]
         public ActionResult Index(User user)
         {
             string token = Request.Cookies["token"].Value;
@@ -40,8 +41,8 @@ namespace EmptyProject.Controllers
         public ActionResult Create(CreateUserVM userVM)
         {
             if (ModelState.IsValid &&
-                _db.User.Select((u) => u.Email == userVM.Email).Count() == 0 &&
-                _db.User.Select((u) => u.Login == userVM.Login).Count() == 0
+               ! _db.User.Select((u) => u.Email == userVM.Email).Any() &&
+                !_db.User.Select((u) => u.Login == userVM.Login).Any()
                 )
             {
                 var user = new User()
@@ -63,7 +64,7 @@ namespace EmptyProject.Controllers
                 return View(userVM);
             }
         }
-
+        [UnAuth]
         [HttpGet]
         public ActionResult Login()
         {
