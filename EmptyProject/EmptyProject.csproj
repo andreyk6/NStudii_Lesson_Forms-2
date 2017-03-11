@@ -127,6 +127,7 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Helper\AuthAttribute.cs" />
     <Compile Include="Helper\UnAuthAttribute.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -177,6 +178,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Subscription\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
