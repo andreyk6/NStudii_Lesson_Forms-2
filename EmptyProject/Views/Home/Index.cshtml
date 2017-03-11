@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    body {
+        background-image: url(http://i.ytimg.com/vi/3BaCNkPSsYk/maxresdefault.jpg);
+    }
+
+    .lead {
+        font-weight: 800;
+        margin-top: 20%;
+        color: white;
+    }
+
+    .head {
+        font-weight: 800;
+    }
+
+    .boss {
+        float: left !important;
+    }
+</style>
+<div class="boss">
+
+    <div class="col-md-6 clo-xs-12">
+        <p class="lead">StoreBoss мы поможем вам управлять своим бизнесом ...</p>
+        <border>
+            <p style="font-size:larger; color:white">
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et congue eros. Fusce vel massa sapien. Maecenas vel eleifend nibh. Pellentesque a vehicula nulla.
+                Nulla vestibulum quis magna non suscipit. Integer eget velit pellentesque, cursus quam vel, semper magna.
+                Suspendisse feugiat nec neque eget iaculis. Praesent ornare dapibus dui sed fringilla.
+                Fusce et enim vitae ipsum sollicitudin lobortis aliquam nec nibh. Donec id nisi magna.
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis finibus faucibus sem sed porta.
+        </border>
+        </p>
+        <p>
+            <center>
+                @Html.ActionLink("Создать аккаунт", "Register", "Account", new { area = "" }, new { @class = "btn btn-success" })
+            </center>
+        </p>
+    </div>
+    <div class="col-md-6 col-xs-12">
+
+        <img class="img-responsive" src="https://psv4.vk.me/c810231/u28417509/docs/7546ff04bf09/landing_boss.png?extra=OUmK9qIkN4aUv7LiwxxUhvfbJgNrp2LRv4rynWj1CKza6GF16k3kxGDD0SrPOku0z0tdTwWFwZ8oRrxzoBDkgSXWCfT8F2eW1y6tGD7NmHwXK_vUKVEbuI4>
+
+    </div>
+</div>
+
