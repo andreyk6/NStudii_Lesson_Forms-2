@@ -118,7 +118,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Views\Brand\Edit.cshtml" />
     <Content Include="Views\Brand\Delete.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -172,6 +174,9 @@
     <Content Include="Views\Brand\Read.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

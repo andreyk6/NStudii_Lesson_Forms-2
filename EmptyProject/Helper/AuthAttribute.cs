@@ -14,35 +14,42 @@ namespace EmptyProject.Helper
         ApplicationContext _db = new ApplicationContext();
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            string tokenValue = httpContext.Request.Cookies.Get("token").Value;
-            if (tokenValue == null)
+            var Cookietoken = httpContext.Request.Cookies.Get("token");
+            if (Cookietoken != null)
             {
-                return false;
-            }
-            
-
-            var token  = _db.Token.FirstOrDefault(t => t.Value == tokenValue);
-            if (token == null)
-            {
-                return false;
-            }
-            var user = _db.Token.FirstOrDefault(t => t.Value == tokenValue).User;
-            if (user != null)
-            {
-                if (DateTime.Now >= user.Token.ExpirensDate)
+                string tokenValue = httpContext.Request.Cookies.Get("token").Value;
+                if (tokenValue == null)
                 {
                     return false;
                 }
+
+
+                var token = _db.Token.FirstOrDefault(t => t.Value == tokenValue);
+                if (token == null)
+                {
+                    return false;
+                }
+                var user = _db.Token.FirstOrDefault(t => t.Value == tokenValue).User;
+                if (user != null)
+                {
+                    if (DateTime.Now >= user.Token.ExpirensDate)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
             else
             {
                 return false;
             }
-
 
 
         }
