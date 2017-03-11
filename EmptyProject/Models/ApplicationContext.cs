@@ -13,7 +13,10 @@ namespace EmptyProject.Models
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
         }
-
+        public ApplicationContext():base("ProjectXDb")
+            {
+            
+            }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Token>()
@@ -38,6 +41,8 @@ namespace EmptyProject.Models
         public DbSet<Item> Item { get; set; }
 
         public DbSet<Store> Store { get; set; }
+
+        public DbSet<Token> Token { get; set; }
         
     }
 }
