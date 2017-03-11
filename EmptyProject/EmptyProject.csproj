@@ -127,6 +127,7 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Helpers\AuthAttribute.cs" />
     <Compile Include="Helpers\UnAuthAttribute.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -196,6 +197,7 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\StoreItems\AddNew.cshtml" />
+    <Content Include="Views\Subscription\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

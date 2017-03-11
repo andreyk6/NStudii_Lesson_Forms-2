@@ -19,6 +19,7 @@ namespace EmptyProject.Controllers
          //   var user = _db.Token.FirstOrDefault(t => t.Value == token).User;
             return View();
         }
+        
 
 
 
