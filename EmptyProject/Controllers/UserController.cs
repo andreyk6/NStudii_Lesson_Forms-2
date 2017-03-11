@@ -41,8 +41,8 @@ namespace EmptyProject.Controllers
         public ActionResult Create(CreateUserVM userVM)
         {
             if (ModelState.IsValid &&
-               ! _db.User.Select((u) => u.Email == userVM.Email).Any() &&
-                !_db.User.Select((u) => u.Login == userVM.Login).Any()
+               ! _db.Users.Select((u) => u.Email == userVM.Email).Any() &&
+                !_db.Users.Select((u) => u.Login == userVM.Login).Any()
                 )
             {
                 var user = new User()
@@ -51,7 +51,7 @@ namespace EmptyProject.Controllers
                     Login = userVM.Login,
                     Password = userVM.Password
                 };
-                _db.User.Add(user);
+                _db.Users.Add(user);
                 _db.SaveChanges();
 
                 return RedirectToAction("Login");
@@ -73,7 +73,7 @@ namespace EmptyProject.Controllers
         [HttpPost]
         public ActionResult Login(LoginUserVM userLoginVM)
         {
-            var user = _db.User.FirstOrDefault(u => u.Login == userLoginVM.Login && u.Password == userLoginVM.Password);
+            var user = _db.Users.FirstOrDefault(u => u.Login == userLoginVM.Login && u.Password == userLoginVM.Password);
             if (user == null)
             {
                 return View(userLoginVM);

@@ -9,47 +9,63 @@ using System.Web.Routing;
 
 namespace EmptyProject.Helper
 {
-    public class UnAuthAttribute : AuthorizeAttribute
+    public class AuthAttribute : AuthorizeAttribute
     {
         ApplicationContext _db = new ApplicationContext();
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            System.Web.HttpCookie tokenCookies = httpContext.Request.Cookies.Get("token");
-            if (tokenCookies != null)
+            var Cookietoken = httpContext.Request.Cookies.Get("token");
+            if (Cookietoken != null)
             {
                 string tokenValue = httpContext.Request.Cookies.Get("token").Value;
                 if (tokenValue == null)
                 {
-                    return true;
+                    return false;
                 }
 
 
-                var token = _db.Token.FirstOrDefault(t => t.Value == tokenValue);
+                var token = _db.Tokens.FirstOrDefault(t => t.Value == tokenValue);
                 if (token == null)
                 {
-                    return true;
+                    return false;
                 }
-                var user = _db.Token.FirstOrDefault(t => t.Value == tokenValue).User;
+                var user = _db.Tokens.FirstOrDefault(t => t.Value == tokenValue).User;
                 if (user != null)
                 {
                     if (DateTime.Now >= user.Token.ExpirensDate)
                     {
-                        return true;
+                        return false;
                     }
                     else
                     {
-                        return false;
+                        return true;
                     }
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
             else
             {
-                return true;
+                return false;
+            }
+
+
+        }
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            if (AuthorizeCore(filterContext.HttpContext) == false)
+            {
+                var routeParams = new RouteValueDictionary()
+                {
+                    { "controller","user"},
+                    { "action","login"}
+                    };
+
+                filterContext.Result = new RedirectToRouteResult(routeParams);
             }
         }
+
     }
 }

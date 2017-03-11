@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace EmptyProject.Controllers
 {
-    public class ItemsController : Controller
+    public class ItemController : Controller
     {
         // GET: Items
         ApplicationContext db = new ApplicationContext();
@@ -34,7 +34,7 @@ namespace EmptyProject.Controllers
                     Price = item.Price,
                     StoreId = item.StoreId
                 };
-                db.Item.Add(NewItem);
+                db.Items.Add(NewItem);
                 db.SaveChanges();
 
                 return RedirectToAction("ItemInfo", new { Id = NewItem.Id });
@@ -49,7 +49,7 @@ namespace EmptyProject.Controllers
             {
                 return HttpNotFound();
             }
-            Item item = db.Item.Find(Id);
+            Item item = db.Items.Find(Id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -64,7 +64,7 @@ namespace EmptyProject.Controllers
             {
                 return HttpNotFound();
             }
-            Item item = db.Item.Find(Id);
+            Item item = db.Items.Find(Id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -87,7 +87,7 @@ namespace EmptyProject.Controllers
             {
                 return HttpNotFound();
             }
-            Item item = db.Item.Find(Id);
+            Item item = db.Items.Find(Id);
             if (item == null)
             {
                 return HttpNotFound();
@@ -101,7 +101,7 @@ namespace EmptyProject.Controllers
             {
                 return HttpNotFound();
             }
-            Item item = db.Item.Find(Id);
+            Item item = db.Items.Find(Id);
             db.Entry(item).State = System.Data.Entity.EntityState.Deleted;
             db.SaveChanges();
             return RedirectToAction("Index");
