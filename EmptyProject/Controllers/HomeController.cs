@@ -19,8 +19,12 @@ namespace EmptyProject.Controllers
             return View();
         }
 
-        
-         
-        
+        public ActionResult Contacts ()
+        {
+
+            return View();
+        }
+
+
     }
 }

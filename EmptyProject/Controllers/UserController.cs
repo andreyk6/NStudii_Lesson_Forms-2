@@ -90,5 +90,11 @@ namespace EmptyProject.Controllers
             _db.SaveChanges();
 
         }
+        public ActionResult AccountINfo ()
+        {
+
+            return View();
+        }
     }
+
 }

@@ -99,7 +99,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\12198090531909861341man silhouette.svg.hi.png" />
+    <Content Include="Content\img\Arctic Monkeys - Old Yellow Bricks.mp3" />
     <Content Include="Content\img\nm5waM20zyQ.jpg" />
+    <Content Include="Content\img\no-translate-detected_318-55563.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
