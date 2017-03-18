@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using EmptyProject.Services
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -41,8 +42,15 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="@Url.Action("create","user")"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="@Url.Action("Login","user")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+               @if (!AccessManager.IsAuthorized())
+               {
+                   <li><a href="@Url.Action("create", "user")"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                   <li><a href="@Url.Action("Login", "user")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+               }
+               else
+               {
+                   @Html.ActionLink("Привет, " + @AccessManager.GetCurrentUser().Login, "AccountINfo", "User");
+               }
             </ul>
         </div>
     </nav>
