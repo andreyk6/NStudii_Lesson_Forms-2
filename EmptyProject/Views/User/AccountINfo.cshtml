@@ -1,41 +1,45 @@
 ﻿
-@{ 
-   ViewBag.Title="AccountINfo";
+@{
+    ViewBag.Title = "AccountINfo";
 
 }
 <audio controls>
     <source src="~/Content/img/Arctic Monkeys - Old Yellow Bricks.mp3" type="audio/ogg; codecs=vorbis">
-    </audio>
-    <style>
-        #Nav-tabs {
-            width: 100px;
-            position: absolute;
-            left: 10px;
-            top: 60px;
-        }
+</audio>
+<style>
+    #Nav-tabs {
+        width: 100px;
+        /*position: absolute;*/
+        left: 10px;
+        top: 60px;
+    }
 
-        #Table-info {
-            right: 10px;
-            top: 50px;
-        }
-    </style>
-    <div class="row">
-        <div class="col-sm-4 col-md-2">
-            <div class="thumbnail">
-                <img src="~/Content/img/12198090531909861341man silhouette.svg.hi.png" alt="...">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p><a href="edit" class="btn btn-primary" role="button">Button</a></p>
-                </div>
+    #Table-info {
+        right: 10px;
+        top: 50px;
+    }
+</style>
+<div class="row">
+    <div class="col-xs-12 col-md-2">
+        <ul id="Nav-tabs" class="nav nav-pills nav-stacked ">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-md-10">
+        <div class="thumbnail">
+            <img class="img-responsive" src="~/Content/img/12198090531909861341man silhouette.svg.hi.png" alt="...">
+            <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="edit" class="btn btn-primary" role="button">Button</a></p>
             </div>
         </div>
     </div>
-    <ul id="Nav-tabs" class="nav nav-pills nav-stacked ">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
-    </ul>
-    <div id="Table-info " class="row , thumbnail">
 
-    </div>
+</div>
+
+<div id="Table-info " class="row thumbnail">
+
+</div>
