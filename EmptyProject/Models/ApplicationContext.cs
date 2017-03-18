@@ -13,36 +13,27 @@ namespace EmptyProject.Models
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
         }
-        public ApplicationContext():base("ProjectXDb")
-            {
-            
-            }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Token>()
                 .HasRequired(t => t.User)
-                .WithOptional(u=>u.Token);
-
-            base.OnModelCreating(modelBuilder);
+                .WithOptional(u => u.Token);
         }
+        public ApplicationContext() : base("ProjectxDb") { }
+        public DbSet<Token> Tokens { get; set; }
 
+        public DbSet<User> Users { get; set; }
 
+        public DbSet<Role> Roles { get; set; }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<Brand> Brands { get; set; }
 
-        public DbSet<Role> Role { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set;}
 
-        public DbSet<Brand> Brand { get; set; }
+        public DbSet<SubscriptionType> SubscriptionTypes { get; set;}
 
-        public DbSet<Subscription> Subscription { get; set;}
+        public DbSet<Item> Items { get; set; }
 
-        public DbSet<SubscriptionType> SubscriptionType { get; set;}
-
-        public DbSet<Item> Item { get; set; }
-
-        public DbSet<Store> Store { get; set; }
-
-        public DbSet<Token> Token { get; set; }
-        
+        public DbSet<Store> Stores { get; set; }
     }
 }

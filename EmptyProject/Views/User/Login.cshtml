@@ -1,13 +1,12 @@
-﻿@model EmptyProject.Controllers.LoginUserVM
+﻿@model EmptyProject.ViewModels.User.LoginUserVM
 
 @{
     ViewBag.Title = "Login";
 }
 
 <h2>Login</h2>
+
 <form method="post">
     @Html.EditorForModel()
-    <input type="submit" value="Accept"/>
+    <button type="submit">Login</button>
 </form>
-
-

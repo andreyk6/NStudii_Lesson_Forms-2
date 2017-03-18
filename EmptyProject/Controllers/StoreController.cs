@@ -14,7 +14,7 @@ namespace EmptyProject.Controllers
         // GET: Store
         public ActionResult Index()
         {
-            return View(_db.Store.ToList());
+            return View(_db.Stores.ToList());
         }
         [HttpGet]
         public ActionResult Create()
@@ -33,7 +33,7 @@ namespace EmptyProject.Controllers
                     Description = storeVM.Description,
                     BrandId = storeVM.BrandId
                 };
-                _db.Store.Add(store);
+                _db.Stores.Add(store);
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -52,7 +52,7 @@ namespace EmptyProject.Controllers
             {
                 return HttpNotFound();
             }
-            Store store = _db.Store.Find(id);
+            Store store = _db.Stores.Find(id);
             if (store != null)
             {
                 return View(store);
@@ -71,7 +71,7 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Delete(Guid id)
         {
-            Store s = _db.Store.Find(id);
+            Store s = _db.Stores.Find(id);
             if (s == null)
             {
                 return HttpNotFound();
@@ -82,12 +82,12 @@ namespace EmptyProject.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Store s = _db.Store.Find(id);
+            Store s = _db.Stores.Find(id);
             if (s == null)
             {
                 return HttpNotFound();
             }
-            _db.Store.Remove(s);
+            _db.Stores.Remove(s);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

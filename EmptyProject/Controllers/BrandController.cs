@@ -16,7 +16,7 @@ namespace EmptyProject.Controllers
 
         public ActionResult Index()
         {
-            List<Brand> brands = db.Brand.ToList();
+            List<Brand> brands = db.Brands.ToList();
             return View(brands);
         }
         
@@ -39,7 +39,7 @@ namespace EmptyProject.Controllers
                     LogoURL = brand.LogoURL,
                     UserId = brand.UserID
                 };
-                db.Brand.Add(newbrand);
+                db.Brands.Add(newbrand);
                 db.SaveChanges();
                 return RedirectToAction("BrandInfo", new { Id = newbrand.Id });
             }
@@ -49,13 +49,13 @@ namespace EmptyProject.Controllers
 
         public ViewResult Read(Guid id )
         {
-            Brand b = db.Brand.Find(id);
+            Brand b = db.Brands.Find(id);
             return View();
         }
 
         public ActionResult Delete(Guid id )
         {
-            Brand b = db.Brand.Find(id);
+            Brand b = db.Brands.Find(id);
             if (b != null)
             {
                 return HttpNotFound();
@@ -66,12 +66,12 @@ namespace EmptyProject.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(Guid id )
         {
-            Brand b = db.Brand.Find(id);
+            Brand b = db.Brands.Find(id);
                 if (b == null)
             {
                 return HttpNotFound();
             }
-            db.Brand.Remove(b);
+            db.Brands.Remove(b);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -83,7 +83,7 @@ namespace EmptyProject.Controllers
             {
                 return HttpNotFound();
             }
-            Brand brand = db.Brand.Find();
+            Brand brand = db.Brands.Find();
             if ( brand != null)
             {
                 return View(brand);

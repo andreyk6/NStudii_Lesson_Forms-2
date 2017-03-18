@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "AddNew";
+}
+
+<h2>AddNew</h2>
+
+@for (int i = 0; i < ViewBag.Items.Count; i++)
+{
+    <h1>@ViewBag.Items[i].Title</h1>
+    <h3>@ViewBag.Items[i].Price</h3>
+    <br>
+}

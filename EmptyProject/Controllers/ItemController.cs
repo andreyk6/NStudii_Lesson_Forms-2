@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace EmptyProject.Controllers
 {
-    public class ItemsController : Controller
+    public class ItemController : Controller
     {
         // GET: Items
         ApplicationContext db = new ApplicationContext();
@@ -24,17 +24,17 @@ namespace EmptyProject.Controllers
         [HttpPost]
         public ActionResult Create(CreateItemVM item)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var NewItem = new Models.Item()
                 {
                     Name = item.Name,
-                    Description=item.Description,
-                    ImageURL=item.ImageUrl,
-                    Price=item.Price,
-                    StoreId=item.StoreId
+                    Description = item.Description,
+                    ImageURL = item.ImageUrl,
+                    Price = item.Price,
+                    StoreId = item.StoreId
                 };
-                db.Item.Add(NewItem);
+                db.Items.Add(NewItem);
                 db.SaveChanges();
 
                 return RedirectToAction("ItemInfo", new { Id = NewItem.Id });
@@ -45,12 +45,12 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Read(Guid Id)
         {
-            if(Id==null)
+            if (Id == null)
             {
                 return HttpNotFound();
             }
-            Item item = db.Item.Find(Id);
-            if(item==null)
+            Item item = db.Items.Find(Id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
@@ -60,12 +60,12 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Edit(Guid? Id)
         {
-            if(Id==null)
+            if (Id == null)
             {
                 return HttpNotFound();
             }
-            Item item = db.Item.Find(Id);
-            if(item==null)
+            Item item = db.Items.Find(Id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
@@ -83,18 +83,17 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Delete(Guid Id)
         {
-            if(Id==null)
+            if (Id == null)
             {
                 return HttpNotFound();
             }
-            Item item = db.Item.Find(Id);
-            if (item==null)
+            Item item = db.Items.Find(Id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
             return View(item);
         }
-
         [HttpPost,ActionName("Delete")]
         public ActionResult DeleteConfirmed(Guid Id)
         {
@@ -102,7 +101,7 @@ namespace EmptyProject.Controllers
             {
                 return HttpNotFound();
             }
-            Item item = db.Item.Find(Id);
+            Item item = db.Items.Find(Id);
             db.Entry(item).State = System.Data.Entity.EntityState.Deleted;
             db.SaveChanges();
             return RedirectToAction("Index");

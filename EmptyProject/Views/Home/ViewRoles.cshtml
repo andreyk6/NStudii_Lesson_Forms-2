@@ -23,7 +23,7 @@
             @Html.DisplayFor(modelItem => role.Name)
         </td>
         <td>
-            @foreach (var user in role.Users)
+            @foreach (var user in role.Name)
             {
                 @user.Login <br />
             }

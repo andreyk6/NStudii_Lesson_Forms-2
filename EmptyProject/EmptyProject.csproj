@@ -122,7 +122,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Views\Brand\Edit.cshtml" />
     <Content Include="Views\Brand\Delete.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -130,7 +132,9 @@
     <Compile Include="Controllers\LoginUserVM.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
-    <Compile Include="Help\AnonymousOnlyAttribute.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
+    <Compile Include="Helpers\AuthAttribute.cs" />
+    <Compile Include="Helpers\UnAuthAttribute.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -145,6 +149,7 @@
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\Subscription.cs" />
     <Compile Include="Models\SubscriptionType.cs" />
+    <Compile Include="Models\Token.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Item\EditItemVM.cs" />
@@ -153,6 +158,7 @@
     <Compile Include="ViewModels\Item\CreateItemVM.cs" />
     <Compile Include="ViewModels\Brand\CreateBrandVM.cs" />
     <Compile Include="ViewModels\User\CreateUserVM.cs" />
+    <Compile Include="ViewModels\User\LoginUserVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -165,19 +171,39 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\Store\Create.cshtml" />
-    <Content Include="Views\Items\Create.cshtml" />
+    <Content Include="Views\Item\Create.cshtml" />
     <Content Include="Views\Brand\Create.cshtml" />
     <Content Include="Views\Store\Edit.cshtml" />
     <Content Include="Views\Store\Delete.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
-    <Content Include="Views\Items\Edit.cshtml" />
-    <Content Include="Views\Items\Read.cshtml" />
+    <Content Include="Views\Item\Edit.cshtml" />
+    <Content Include="Views\Item\Read.cshtml" />
     <Content Include="Views\Brand\Read.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Contacts.cshtml" />
-    <Content Include="Views\User\AccountINfo.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\StoreItems\AddNew.cshtml" />
+    <Content Include="Views\Subscription\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,6 +212,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="App_Data\NewFolder1\" />
     <Folder Include="Views\AnonymousOnlyAttribute\" />
     <Folder Include="Views\CreateBrandVM\" />
