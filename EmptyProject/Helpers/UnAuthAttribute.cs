@@ -32,7 +32,7 @@ namespace EmptyProject.Helper
                 var user = _db.Tokens.FirstOrDefault(t => t.Value == tokenValue).User;
                 if (user != null)
                 {
-                    if (DateTime.Now >= user.Token.ExpirensDate)
+                    if (DateTime.Now >= user.Token.ExpiresDate)
                     {
                         return true;
                     }

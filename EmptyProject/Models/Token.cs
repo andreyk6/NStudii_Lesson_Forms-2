@@ -5,9 +5,9 @@ using System.Web;
 
 namespace EmptyProject.Models
 {
-    public class Token 
+    public class Token
     {
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
 
         public string Value { get; set; }
 
@@ -16,5 +16,5 @@ namespace EmptyProject.Models
         public Guid UserId { get; set; }
 
         public virtual User User { get; set; }
-     }
+    }
 }
