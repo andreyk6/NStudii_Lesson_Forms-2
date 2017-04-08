@@ -1,88 +1,55 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initiale-scale=1"/>
+
 <style>
     body {
-        background-color: #f2f2f2;
-        font-family: "Courier New";
-        font-weight: 300;
-        font-size: 16px;
-        color: #555;
-        -webkit-font-smoothing: antialiased;
-        -webkit-overflow-scrolling: touch;
-        margin-top: 70px;
-    
+        background-image: url(http://i.ytimg.com/vi/3BaCNkPSsYk/maxresdefault.jpg);
+    }
 
-         
-       
+    .lead {
+        font-weight: 800;
+        margin-top: 20%;
+        color: white;
     }
-    h1, h2, h3, h4, h5, h6 {
-        font-family:'Courier New';
-        font-weight:300;
-        color:#333;
+
+    .head {
+        font-weight: 800;
     }
-    p {
-        line-height: 280px;
-        margin-bottom: 25px;
+
+    .boss {
+        float: left !important;
     }
-    .centered {
-        text-align: center;
-    }
-    a{
-        color:#f85c37;
-    }
-    a:hover, a:focus{
-        color: #7b7b7b;
-        text-decoration:none;
-        outline:0;
-        
-    }
-    hr{
-        display:block;
-        height: 1px;
-        border-top: 1px solid #ccc;
-        margin: 1em 0;
-        padding: 0;
-    }
-    .navbar{
-        font-weight:800;
-        font-size: 14px;
-        padding-top:15px;
-        padding-bottom:15px;
-    }
-    .navbar-inverse {
-        background: #2d2d2d;
-        border-color: #2d2d2d;
-    }
-        .navbar-inverse .navbar-nav > .active > a{
-    background-color:#ff7878;
-    }
-    </style>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top"/>
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="colapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">StoreBOSS</a>
-        </div>
-        <div>
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav navbar-right">
-                  <li class="active"><a href="#">Домой</a></li>
-                  <li class="active"><a href="#">Сервис</a></li>
-                  <li class="active"><a href="#">Как нас найти</a></li>
-                  <li class="active"><a href="#">Наш оффис</a></li>
-                  <li class="active"><a href="#">Аккаунт</a></li>
-              </ul>
-            </div>
-        </div>
+</style>
+<div class="boss">
+
+    <div class="col-md-6 clo-xs-12">
+        <p class="lead">StoreBoss мы поможем вам управлять своим бизнесом ...</p>
+        <border>
+            <p style="font-size:larger; color:white">
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et congue eros. Fusce vel massa sapien. Maecenas vel eleifend nibh. Pellentesque a vehicula nulla.
+                Nulla vestibulum quis magna non suscipit. Integer eget velit pellentesque, cursus quam vel, semper magna.
+                Suspendisse feugiat nec neque eget iaculis. Praesent ornare dapibus dui sed fringilla.
+                Fusce et enim vitae ipsum sollicitudin lobortis aliquam nec nibh. Donec id nisi magna.
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis finibus faucibus sem sed porta.
+        </border>
+        </p>
+        <p>
+            <center>
+                @Html.ActionLink("Создать аккаунт", "Create", "User", new { area = "" }, new { @class = "btn btn-success btn-md" })
+            </center>
+        </p>
     </div>
-</body>
+    <div class="col-md-6 col-xs-12">
+
+        <!--<img class="img-responsive" src="~/Content/img/nm5waM20zyQ.jpg" />-->
+
+
+    </div>
+</div>
+
+
+
     
 
