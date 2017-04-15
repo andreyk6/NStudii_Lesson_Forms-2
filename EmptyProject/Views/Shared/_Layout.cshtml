@@ -49,7 +49,7 @@
                 }
                 else
                 {
-                    <li><a href="@Url.Action("accountinfo", "user")">Hello</a></li>
+                    <li>@Html.ActionLink("Привет, " + @AccessManager.GetCurrentUser().Login, "AccountINfo", "User",  new { @class= "" })</li>
                 }
             </ul>
         </div>

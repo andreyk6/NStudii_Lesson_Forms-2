@@ -212,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\NewFolder1\" />
+    <Folder Include="Views\AccessManager\" />
     <Folder Include="Views\AnonymousOnlyAttribute\" />
     <Folder Include="Views\CreateBrandVM\" />
     <Folder Include="Views\CreateStoreVM\" />
