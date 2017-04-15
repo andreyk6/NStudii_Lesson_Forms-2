@@ -1,21 +1,51 @@
 ﻿@model IEnumerable<EmptyProject.Models.Brand>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-<h1>
-    Brand List
-</h1>
 
-@foreach (var brand in Model)
-{
-    <h3>@brand.Name</h3>
-    <img src="@brand.LogoURL" />
-    <ul>
-        <li>@brand.Id</li>
-@*        <li>@brand.Stores.Select(s=>s.Name).ToString()</li>*@
-        <li>@brand.Description</li>
-        <li>@brand.User.Login (@brand.UserId)</li>
-    </ul>
-}
+<p>
+    @Html.ActionLink("Create", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            UserId
+        </th>
+        <th>
+            Id
+        </th>
+    </tr>
+    @foreach (var brand in Model)
+    {
+        <tr>
+            <td>
+                @brand.Name
+            </td>
+            <td>
+                @brand.Description
+            </td>
+            <td>
+                @brand.UserId
+            </td>
+            <td>
+                @brand.Id
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = brand.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = brand.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+
