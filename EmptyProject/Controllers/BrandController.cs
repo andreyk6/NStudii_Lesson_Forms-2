@@ -17,7 +17,12 @@ namespace EmptyProject.Controllers
 
         public ActionResult Index()
         {
-            List<Brand> brands = db.Brands.ToList();
+            Guid userId = AccessManager.GetCurrentUser().Id;
+
+            List<Brand> brands = db.Brands
+            .Where(b => b.UserId == userId)
+            .ToList();
+
             return View(brands);
         }
         
@@ -44,16 +49,16 @@ namespace EmptyProject.Controllers
                 };
                 db.Brands.Add(newbrand);
                 db.SaveChanges();
-                return RedirectToAction("BrandInfo", new { Id = newbrand.Id });
+                return RedirectToAction("Info", new { Id = newbrand.Id });
             }
             return View(brand);
         }
 
 
-        public ViewResult Read(Guid id )
+        public ViewResult Info(Guid id )
         {
             Brand b = db.Brands.Find(id);
-            return View();
+            return View(b);
         }
 
         public ActionResult Delete(Guid id )
@@ -86,7 +91,7 @@ namespace EmptyProject.Controllers
             {
                 return HttpNotFound();
             }
-            Brand brand = db.Brands.Find();
+            Brand brand = db.Brands.Find(id);
             if ( brand != null)
             {
                 return View(brand);
