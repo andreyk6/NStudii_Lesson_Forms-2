@@ -1,4 +1,4 @@
-﻿@using EmptyProject.Services
+﻿@using EmptyProject.Services;
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +54,7 @@
                 }
                 else
                 {
-                    @Html.ActionLink("Привет, " + @AccessManager.GetCurrentUser().Login, "AccountINfo", "User");
+                    <li>@Html.ActionLink("Привет, " + @AccessManager.GetCurrentUser().Login, "AccountINfo", "User",  new { @class= "" })</li>
                 }
             </ul>
         </div>

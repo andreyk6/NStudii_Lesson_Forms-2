@@ -1,4 +1,5 @@
 ﻿using EmptyProject.Models;
+using EmptyProject.Services;
 using EmptyProject.ViewModels.Brand;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,9 @@ namespace EmptyProject.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new CreateBrandVM());
+            var brandVM = new CreateBrandVM();
+            brandVM.UserID = AccessManager.GetCurrentUser().Id;
+            return View(brandVM);
         }
 
         [HttpPost]
