@@ -22,17 +22,21 @@
                 <li class="active">
                     @Html.ActionLink("Home", "index", "home")
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">My projects <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            @Html.ActionLink("Brand", "index", "Brand")
-                        </li>
-                        <li>
-                            @Html.ActionLink("Store", "index", "Store")
-                        </li>
-                    </ul>
-                </li>
+                @if (AccessManager.IsAuthorized())
+                {
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My projects <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Brand", "index", "Brand")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Store", "index", "Store")
+                            </li>
+                        </ul>
+                    </li>
+                }
+               
                 <li>
                     @Html.ActionLink("Contacts", "contact", "home")
                 </li>
@@ -41,6 +45,7 @@
                     @Html.ActionLink("About Us", "about", "home")
                 </li>
             </ul>
+            
             <ul class="nav navbar-nav navbar-right">
                 @if (!AccessManager.IsAuthorized())
                 {
@@ -49,7 +54,7 @@
                 }
                 else
                 {
-                    @Html.ActionLink("Привет, " + @AccessManager.GetCurrentUser().Login, "AccountINfo", "User",  });
+                    @Html.ActionLink("Привет, " + @AccessManager.GetCurrentUser().Login, "AccountINfo", "User");
                 }
             </ul>
         </div>
