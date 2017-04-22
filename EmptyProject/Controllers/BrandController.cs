@@ -62,10 +62,11 @@ namespace EmptyProject.Controllers
             return View(brand);
         }
 
-
+        
         public ViewResult Info(Guid id )
         {
             Brand b = db.Brands.Find(id);
+            
             return View(b);
         }
 
@@ -78,7 +79,11 @@ namespace EmptyProject.Controllers
             }
             return View(b);
         }
-
+        public ActionResult Stores(Guid id)
+        {
+            var stores = db.Stores.Where((s) => s.BrandId == id);
+            return View(stores);
+        }
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(Guid id )
         {

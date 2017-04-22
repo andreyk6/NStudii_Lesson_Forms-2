@@ -1,0 +1,22 @@
+﻿@model  IEnumerable<EmptyProject.Models.Store>
+@{
+    ViewBag.Title = "Stores";
+}
+
+<h2>Stores</h2>
+@foreach (var Store in Model)
+{
+    <tr>
+        <td>
+            @Store.Name
+        </td>
+        <td>
+            @Store.Description
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit","Store", new { id = Store.Id }, new { }) |
+            @Html.ActionLink("Delete", "Delete","Store", new { id = Store.Id }, new { }) |
+            @Html.ActionLink("Info", "Info","Store", new { id = Store.Id }, new { })
+        </td>
+    </tr>
+}
