@@ -1,4 +1,6 @@
-﻿@{
+﻿
+@using EmptyProject.Services;
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -37,7 +39,10 @@
         </p>
         <p>
             <center>
+                @if (!AccessManager.IsAuthorized())
+                {
                 @Html.ActionLink("Создать аккаунт", "Create", "User", new { area = "" }, new { @class = "btn btn-success btn-md" })
+                }
             </center>
         </p>
     </div>
