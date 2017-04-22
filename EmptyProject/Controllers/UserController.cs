@@ -69,6 +69,12 @@ namespace EmptyProject.Controllers
         {
             return View(new LoginUserVM());
         }
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            HttpContext.Response.Cookies["token"].Expires = DateTime.Now.AddDays(-1);
+            return RedirectToAction("Index", "Home");
+        }
         [HttpPost]
         public ActionResult Login(LoginUserVM userLoginVM)
         {
