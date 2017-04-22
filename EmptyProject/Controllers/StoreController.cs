@@ -78,6 +78,11 @@ namespace EmptyProject.Controllers
             }
             return View(s);
         }
+        public ActionResult Info(Guid id)
+        {
+            Store Info = _db.Stores.Find(id);
+            return View(Info);
+        }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(Guid id)

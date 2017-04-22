@@ -204,6 +204,7 @@
     <Content Include="Views\StoreItems\AddNew.cshtml" />
     <Content Include="Views\Subscription\Index.cshtml" />
     <Content Include="Views\Brand\Stores.cshtml" />
+    <Content Include="Views\Store\Info.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
