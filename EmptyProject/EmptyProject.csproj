@@ -203,6 +203,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\StoreItems\AddNew.cshtml" />
     <Content Include="Views\Subscription\Index.cshtml" />
+    <Content Include="Views\Brand\Discovery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

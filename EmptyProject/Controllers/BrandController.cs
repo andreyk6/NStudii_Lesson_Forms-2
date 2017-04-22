@@ -1,4 +1,5 @@
-﻿using EmptyProject.Models;
+﻿using EmptyProject.Helper;
+using EmptyProject.Models;
 using EmptyProject.Services;
 using EmptyProject.ViewModels.Brand;
 using System;
@@ -15,6 +16,12 @@ namespace EmptyProject.Controllers
         public ApplicationContext db = new ApplicationContext();
 
 
+        public ActionResult Discovery()
+        {
+            List<Brand> brands = db.Brands.ToList();
+            return View(brands);
+        }
+
         public ActionResult Index()
         {
             Guid userId = AccessManager.GetCurrentUser().Id;
@@ -28,6 +35,7 @@ namespace EmptyProject.Controllers
         
         // GET: Brand
         [HttpGet]
+        [AuthAttribute]
         public ActionResult Create()
         {
             var brandVM = new CreateBrandVM();

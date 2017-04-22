@@ -1,0 +1,37 @@
+﻿@model IEnumerable<EmptyProject.Models.Brand>
+
+@{
+    ViewBag.Title = "Discovery";
+}
+
+<h2>Discovery</h2>
+
+<p>
+    @Html.ActionLink("Create Your Own", "Create")
+</p>
+
+@foreach (var item in Model)
+{
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <img width="200" src="@item.LogoURL" />
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <b>
+                @Html.DisplayNameFor(model => model.Name)
+            </b>
+            @Html.DisplayFor(modelItem => item.Name)
+            <br />
+            <b>
+                @Html.DisplayNameFor(model => model.Description)
+            </b>
+            <p style="word-wrap: break-word;">
+                @Html.DisplayFor(modelItem => item.Description)
+            </p>
+            <br />
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+        </div>
+    </div>
+}
+

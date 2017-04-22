@@ -41,9 +41,8 @@ namespace EmptyProject.Controllers
         public ActionResult Create(CreateUserVM userVM)
         {
             if (ModelState.IsValid &&
-               !_db.Users.Where((u) => u.Email == userVM.Email).Any() &&
-                !_db.Users.Where((u) => u.Login == userVM.Login).Any()
-                )
+               !_db.Users.Any((u) => u.Email == userVM.Email) &&
+                !_db.Users.Any((u) => u.Login == userVM.Login))
             {
                 var user = new User()
                 {
