@@ -10,9 +10,18 @@ namespace EmptyProject.Services
     {
         private static ApplicationContext _db;
 
+        private static ApplicationContext GetContext()
+        {
+            if (_db == null)
+            {
+                _db = new ApplicationContext();
+            }
+            return _db;
+        }
+
         static AccessManager()
         {
-            _db = new ApplicationContext();
+
         }
 
         public static bool IsAuthorized()
@@ -42,7 +51,7 @@ namespace EmptyProject.Services
             {
                 return null;
             }
-            Token token = _db.Tokens.FirstOrDefault(t => t.Value == tokenValue);
+            Token token = GetContext().Tokens.FirstOrDefault(t => t.Value == tokenValue);
             if (token == null)
             {
                 return null;

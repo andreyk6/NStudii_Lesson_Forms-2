@@ -1,4 +1,4 @@
-﻿@model IEnumerable < EmptyProject.Models.Store>
+﻿@model IEnumerable<EmptyProject.Models.Store>
 
 @{
     ViewBag.Title = "Index";
@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create" , "Create")
+    @Html.ActionLink("Create", "Create")
 </p>
 
 <table class="table">
@@ -18,32 +18,21 @@
         <th>
             Description
         </th>
-        <th>
-           BrandId 
-        </th>
-        <th>
-            Id
-        </th>
-     </tr>
-        @foreach (var store in Model)
-        {
-            <tr>
-                <td>
-                    @store.Name
-                </td>
-                <td>
-                    @store.Description
-                </td>
-                <td>
-                    @store.BrandId
-                </td>
-                <td>
-                    @store.Id
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = store.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = store.Id })
-                </td>
-            </tr>
-        }
+    </tr>
+    @foreach (var Store in Model)
+    {
+        <tr>
+            <td>
+                @Store.name
+            </td>
+            <td>
+                @Store.Description
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = Store.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Store.id }) |
+                @Html.ActionLink("Info", "Info", new { id = Store.id })
+            </td>
+        </tr>
+    }
 </table>

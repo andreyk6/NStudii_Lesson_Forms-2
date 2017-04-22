@@ -18,12 +18,6 @@
         <th>
             Description
         </th>
-        <th>
-            UserId
-        </th>
-        <th>
-            Id
-        </th>
     </tr>
     @foreach (var brand in Model)
     {
@@ -35,14 +29,9 @@
                 @brand.Description
             </td>
             <td>
-                @brand.UserId
-            </td>
-            <td>
-                @brand.Id
-            </td>
-            <td>
                 @Html.ActionLink("Edit", "Edit", new { id = brand.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = brand.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = brand.Id }) |
+                @Html.ActionLink("Info","Info", new { id=brand.Id })
             </td>
         </tr>
     }
