@@ -16,10 +16,10 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="home/index">StoreBoss</a>
+                @Html.ActionLink("StoreBoss", "Index", "Home", new { }, new { @class = "navbar-brand" })
             </div>
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     @Html.ActionLink("Home", "index", "home")
                 </li>
                 <li class="dropdown">
@@ -49,7 +49,7 @@
                 }
                 else
                 {
-                    <li>@Html.ActionLink("Привет, " + @AccessManager.GetCurrentUser().Login, "AccountINfo", "User",  new { @class= "" })</li>
+                    <li>@Html.ActionLink("Привет, " + @AccessManager.GetCurrentUser().Login, "AccountINfo", "User", new { @class = "" })</li>
                 }
             </ul>
         </div>
