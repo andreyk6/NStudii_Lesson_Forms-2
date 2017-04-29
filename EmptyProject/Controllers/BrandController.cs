@@ -65,9 +65,9 @@ namespace EmptyProject.Controllers
         
         public ViewResult Info(Guid id )
         {
-            Brand b = db.Brands.Find(id);
+            Brand brand = db.Brands.Include(b => b.Stores).FirstOrDefault(b => b.Id == id);
             
-            return View(b);
+            return View(brand);
         }
 
         public ActionResult Delete(Guid id )

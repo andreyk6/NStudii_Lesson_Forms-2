@@ -1,40 +1,49 @@
 ﻿@model IEnumerable<EmptyProject.Models.Brand>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Your brands";
 }
 
-<h2>Index</h2>
+<h2>Your brands</h2>
 
 <p>
-    @Html.ActionLink("Create", "Create")
+    @Html.ActionLink("Add new", "Create")
 </p>
 
-<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Description
-        </th>
-    </tr>
+<div class="row">
     @foreach (var brand in Model)
     {
-        <tr>
-            <td>
-                @brand.Name
-            </td>
-            <td>
-                @brand.Description
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = brand.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = brand.Id }) |
-                @Html.ActionLink("Info","Info", new { id=brand.Id })
-            </td>
-        </tr>
+        <hr />
+        <div class="row">
+            <div class="col col-xs-12">
+                <h3>@brand.Name</h3>
+                <div class="col col-xs-2">
+                    <img class="img-responsive img-rounded" width="100%" src="@brand.LogoURL" />
+                </div>
+                <div class="col col-xs-6">
+                    <h4>@Html.LabelFor(modelItem => brand.Description)</h4>
+                    @Html.DisplayFor(modelItem => brand.Description)
+                </div>
+                <div class="col col-xs-3">
+                    <h4>@Html.LabelFor(modelItem => brand.Stores)</h4>
+                    @if (brand.Stores != null && brand.Stores.Any())
+                    {
+                        <ul>
+
+                            @foreach (var store in brand.Stores)
+                            {
+                                <li>@store.Name</li>
+                            }
+                        </ul>
+                    }
+                    @Html.ActionLink("Add new store", "Create", "Store", new { brandGuid = brand.Id }, new {})
+                </div>
+                <div class="col-xs-1">
+                    @Html.ActionLink("Edit", "Edit", new { id = brand.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = brand.Id }) |
+                    @Html.ActionLink("Info", "Info", new { id = brand.Id })
+                </div>
+            </div>
+        </div>
     }
-</table>
-
-
+</div>

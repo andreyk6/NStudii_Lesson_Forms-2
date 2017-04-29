@@ -17,9 +17,12 @@ namespace EmptyProject.Controllers
             return View(_db.Stores.ToList());
         }
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(Guid brandGuid)
         {
-            return View(new CreateStoreVM());
+            var vm = new CreateStoreVM();
+            vm.BrandId = brandGuid;
+
+            return View(vm);
         }
 
         [HttpPost]

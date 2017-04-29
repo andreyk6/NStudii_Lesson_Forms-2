@@ -206,6 +206,7 @@
     <Content Include="Views\Brand\Stores.cshtml" />
     <Content Include="Views\Store\Info.cshtml" />
     <Content Include="Views\Brand\Discovery.cshtml" />
+    <Content Include="Views\User\AccountInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

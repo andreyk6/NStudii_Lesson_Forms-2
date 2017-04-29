@@ -14,7 +14,7 @@ namespace EmptyProject.Models
         public Guid UserId { get; set; }
         public virtual User User { get; set; }
 
-        public ICollection<Store> Stores { get; set; }
+        public virtual ICollection<Store> Stores { get; set; }
 
     }
 }
