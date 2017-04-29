@@ -1,10 +1,10 @@
 ﻿@model EmptyProject.Models.Store
 
 @{
-    ViewBag.Title = "Read";
+    ViewBag.Title = "Smth";
 }
 
-<h2>Read</h2>
+<h2>@Model.Name</h2>
 
 <div>
     <h4>Store</h4>
@@ -28,6 +28,19 @@
 
     </dl>
 </div>
+@Html.ActionLink("Add new item", "Create","Item",new { storeId= Model.Id },new { }) 
+@foreach (var item in Model.Items)
+{ <div class="row">
+
+    <div class="col-xs-9">
+         <h3>@item.Name</h3>
+    </div>
+    <div class="col-xs-3">
+        <img class="img-responsive" src="@item.ImageURL"  style="max-height:50px"/>
+    </div>
+
+  </div>
+}
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

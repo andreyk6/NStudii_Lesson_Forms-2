@@ -17,9 +17,11 @@ namespace EmptyProject.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(Guid storeId)
         {
-            return View(new CreateItemVM());
+            var vm = new CreateItemVM();
+            vm.StoreId = storeId;
+            return View(vm);
         }
         [HttpPost]
         public ActionResult Create(CreateItemVM item)
@@ -37,7 +39,7 @@ namespace EmptyProject.Controllers
                 db.Items.Add(NewItem);
                 db.SaveChanges();
 
-                return RedirectToAction("ItemInfo", new { Id = NewItem.Id });
+                return RedirectToAction("Read", new { Id = NewItem.Id });
             }
             return View(item);
         }
